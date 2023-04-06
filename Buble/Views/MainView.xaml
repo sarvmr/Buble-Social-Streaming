@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Buble.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="1300"
       xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
       xmlns:viewModel="clr-namespace:Buble.ViewModels"
       Title="MainView">
@@ -108,20 +108,6 @@
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="UserPlus" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Subsription" Style="{StaticResource menuButtonText}"/>
-                        </StackPanel>
-                    </RadioButton>
-
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color3}">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="Download" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Downloads" Style="{StaticResource menuButtonText}"/>
-                        </StackPanel>
-                    </RadioButton>
-
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color4}">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="Bookmark" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Watch later" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 

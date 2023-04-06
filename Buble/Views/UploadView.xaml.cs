@@ -23,6 +23,7 @@ namespace Buble.Views
     public partial class UploadView : UserControl
     {
         private string videoFilePath = "";
+        private string thumbnailpath = "";
         UploadViewModel viewModel;
 
         public UploadView()
@@ -44,16 +45,29 @@ namespace Buble.Views
             }
         }
 
+        private void SelectThumbnail_Click(object sender, EventArgs e)
+        {
+            // Show a file dialog to select the video file
+            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.png;*.jpeg;*.svg)|*.png;*.jpeg;*.svg|All Files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // Save the selected file path and display it in the TextBlock
+                thumbnailpath = openFileDialog.FileName;
+            }
+        }
+
         private void Button_Click(object sender, EventArgs e)
         {
             // Check if a video file has been selected
-            if (string.IsNullOrEmpty(videoFilePath) && string.IsNullOrEmpty(KeyName.Text))
+            if (string.IsNullOrEmpty(videoFilePath) && string.IsNullOrEmpty(KeyName.Text) && string.IsNullOrEmpty(thumbnailpath))
             {
                 System.Windows.MessageBox.Show("Please select a video file to upload.");
                 return;
             }
 
-            viewModel.Upload_To_Cloud(KeyName.Text, videoFilePath);
+            viewModel.Upload_To_Cloud(KeyName.Text, videoFilePath, thumbnailpath);
 
             // TODO: Upload the fileBytes to the server using a web API or other mechanism
             Console.WriteLine("File uploaded successfully.");

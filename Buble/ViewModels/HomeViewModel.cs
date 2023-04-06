@@ -39,7 +39,7 @@ namespace Buble.ViewModels
                 VideoDetail.Likes = video.likes;
                 VideoDetail.Dislikes = video.dislikes;
                 VideoDetail.Channel = video.channel;
-                VideoDetail.ThumbnailURL = video.Thumbnail;
+                VideoDetail.URL = video.URL;
             }
         }
     }

@@ -20,7 +20,6 @@ C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\ScreenRecorderView.g.cs
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\UploadView.g.cs
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\UserProfile.g.cs
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\VideoPlayer.g.cs
-C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\WatchLaterView.g.cs
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\App.baml
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\CustomControls\BindablePasswordBox.baml
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\AllVideosPage.baml
@@ -33,7 +32,6 @@ C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\ScreenRecorderView.baml
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\UploadView.baml
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\UserProfile.baml
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\VideoPlayer.baml
-C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\WatchLaterView.baml
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\Windows\StartWindowView.baml
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Buble.exe
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Buble.pdb

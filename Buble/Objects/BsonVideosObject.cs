@@ -29,5 +29,8 @@ namespace Buble.Objects
         [BsonElement("comments")]
         public ArrayList Comments { get; set; }
 
+        [BsonElement("thumbnail_image")]
+        public byte[] ThumbnailImage { get; set; }
+
     }
 }

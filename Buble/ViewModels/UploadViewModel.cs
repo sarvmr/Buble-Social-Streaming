@@ -27,10 +27,11 @@ namespace Buble.ViewModels
 
         public async void Upload_To_Cloud(
             string key_name,
-            string filepath)
+            string filepath,
+            string thumbnail_path)
         {
             //Check if video exists or not.
-            videoRepository.AddVideoInformationToMongoDB(key_name, "sahil");
+            videoRepository.AddVideoInformationToMongoDB(key_name, "sahil", thumbnail_path);
             upload.UploadFileAsync(s3Client, existingBucketName, $"{key_name}.mp4", filepath).Wait();
         }
     }

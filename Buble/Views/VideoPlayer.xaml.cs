@@ -43,8 +43,8 @@ namespace Buble.Views
 
         private void MyPage_Loaded(object sender, RoutedEventArgs e)
         {
-            var str = loaded_video.Thumbnail;
-            webView.Source = new Uri("https://d1m5sbyhb726tv.cloudfront.net/Ron%20Swanson,%20A%20Lifestyle%20(Vol.%20III)%20_%20Parks%20and%20Recreation.mp4");
+            Console.WriteLine(loaded_video.URL);
+            webView.Source = new Uri(loaded_video.URL);
         }
 
         private void MyPage_Unloaded(object sender, RoutedEventArgs e)

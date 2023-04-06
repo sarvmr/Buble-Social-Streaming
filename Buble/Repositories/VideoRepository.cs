@@ -10,6 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
+using SharpCompress.Common;
+using System.IO;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Windows.Interop;
+using System.Windows.Media.Imaging;
+using System.Windows;
 
 namespace Buble.Repositories
 {
@@ -31,6 +38,25 @@ namespace Buble.Repositories
             List<VideosModel> videos = new List<VideosModel>();
             foreach (BsonDocument document in documents)
             {
+                Image image;
+                using (MemoryStream stream = new MemoryStream(document["thumbnail_image"].AsByteArray))
+                {
+                    image = Image.FromStream(stream);
+                }
+
+                byte[] imageData;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    imageData = ms.ToArray();
+                }
+
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.StreamSource = new MemoryStream(imageData);
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+
                 VideosModel data = new VideosModel
                 {
                     ID = document["_id"].ToString(),
@@ -38,8 +64,9 @@ namespace Buble.Repositories
                     dislikes = document["dislikes"].ToInt32(),
                     channel = document["channel"].ToString(),
                     title = document["title"].ToString(),
-                    Thumbnail = document["url"].ToString()
-                };
+                    URL = document["url"].ToString(),
+                    Thumbnail = bitmap
+            };
                 videos.Add(data);
             }
 
@@ -60,10 +87,30 @@ namespace Buble.Repositories
 
                 if (result != null)
                 {
+                    Image image;
+                    using (MemoryStream stream = new MemoryStream(result.GetValue("thumbnail_image").AsByteArray))
+                    {
+                        image = Image.FromStream(stream);
+                    }
+
+                    byte[] imageData;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        imageData = ms.ToArray();
+                    }
+
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.StreamSource = new MemoryStream(imageData);
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.EndInit();
+
                     video = new VideosModel()
                     {
                         ID = result.GetValue("_id").ToString(),
-                        Thumbnail = result.GetValue("url").ToString(),
+                        Thumbnail = bitmap,
+                        URL = result.GetValue("url").ToString(),    
                         likes = result.GetValue("likes").ToInt32(),
                         dislikes = result.GetValue("dislikes").ToInt32(),
                         channel = result.GetValue("channel").ToString(),
@@ -75,7 +122,7 @@ namespace Buble.Repositories
             return video;
         }
 
-        public void AddVideoInformationToMongoDB(string title, string channel)
+        public void AddVideoInformationToMongoDB(string title, string channel, string thumbnailimage)
         {
             MongoClient client = GetMongoClient();
             // Get the database object
@@ -92,8 +139,9 @@ namespace Buble.Repositories
                 Likes = 0,
                 Dislikes = 0,
                 Url = "https://d1m5sbyhb726tv.cloudfront.net/" + title + ".mp4",
-                Comments = new ArrayList()
-            };
+                Comments = new ArrayList(),
+                ThumbnailImage = File.ReadAllBytes(thumbnailimage)
+        };
 
             // Insert the document into the collection
             collection.InsertOne(document);
