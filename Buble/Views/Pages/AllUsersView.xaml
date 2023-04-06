@@ -1,0 +1,76 @@
+﻿<Page x:Class="Buble.Views.Pages.AllUsersView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Buble.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+      Title="AllUsersView">
+
+
+    <ItemsControl ItemsSource="{Binding customers}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+
+            <DataTemplate>
+
+                <Button Height="250" Width="230" Margin="8" Background="{x:Null}" BorderThickness="0">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="OverridesDefaultStyle" Value="True"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        SnapsToDevicePixels="True">
+                                            <ContentPresenter Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              RecognizesAccessKey="True"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                    <StackPanel Height="220" Width="230">
+                        <Image Margin="0" Height="150" x:Name="Musicimg" Stretch="Uniform" Source="C:\Users\raisa\source\repos\Buble-Video-Streaming-App\WpfApp2\Images\username-icon.png" />
+                        <TextBlock Margin="10,0,0,0" FontSize="19" Text="{Binding Firstname}" Foreground="White" TextAlignment="Center" FontWeight="SemiBold" x:Name="lblSongname" HorizontalAlignment="Left"/>
+                        <TextBlock Margin="10,0,0,0" FontSize="15" Text="{Binding Username}" Foreground="White" TextAlignment="Center" FontWeight="ExtraLight" HorizontalAlignment="Left"/>
+                        <Button Click="user_button_cliked" Height="25" Width="30" HorizontalAlignment="Right" Margin="0,0,10,0" Uid="{Binding Username}">
+                            <fa:IconImage x:Name="icon" Icon="Add" Height="19" Width="19" Foreground="White" HorizontalAlignment="Right"/>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        SnapsToDevicePixels="True">
+                                                    <ContentPresenter Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              RecognizesAccessKey="True"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
+                </Button>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</Page>
