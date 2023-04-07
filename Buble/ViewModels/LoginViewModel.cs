@@ -16,6 +16,12 @@ namespace Buble.ViewModels
     {
         private string _username;
         private SecureString _password;
+
+        private string _signup_username;
+        private string _signup_password;
+        private string _signup_email;
+        private string _signup_name;
+
         private string _errorMessage;
         private bool _isViewVisible = true;
 
@@ -46,6 +52,7 @@ namespace Buble.ViewModels
             }
 
         }
+
         public bool IsViewVisible
         {
             get => _isViewVisible; set
@@ -55,7 +62,42 @@ namespace Buble.ViewModels
             }
         }
 
+        public string SignUp_Username
+        {
+            get => _signup_username; set
+            {
+                _signup_username = value;
+                OnPropertyChnaged(nameof(SignUp_Username));
+            }
+        }
+        public string SignUp_Password
+        {
+            get => _signup_password; set
+            {
+                _signup_password = value;
+                OnPropertyChnaged(nameof(SignUp_Password));
+            }
+        }
+
+        public string SignUp_Email
+        {
+            get => _signup_email; set
+            {
+                _signup_email = value;
+                OnPropertyChnaged(nameof(SignUp_Email));
+            }
+        }
+        public string SignUp_Name
+        {
+            get => _signup_name; set
+            {
+                _signup_name = value;
+                OnPropertyChnaged(nameof(SignUp_Name));
+            }
+        }
+
         public ICommand LoginCommand { get; }
+        public ICommand SignUpCommand { get; }
         public ICommand RecoverPasswordCommand { get; }
         public ICommand ShowPasswordCommand { get; }
         public ICommand RememberPasswordCommand { get; }
@@ -64,6 +106,7 @@ namespace Buble.ViewModels
         {
             userRepository = new UserRepository();
             LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
+            SignUpCommand = new ViewModelCommand(ExecuteSignUpCommand, CanExecuteSignUpCommand);
             RecoverPasswordCommand = new ViewModelCommand(p => ExecuteRecoverCommand("", ""));
         }
 
@@ -82,6 +125,18 @@ namespace Buble.ViewModels
             return validData;
         }
 
+        private bool CanExecuteSignUpCommand(object obj)
+        {
+            bool validData;
+            if ((string.IsNullOrWhiteSpace(SignUp_Name) || SignUp_Name.Length < 3) 
+                && (string.IsNullOrWhiteSpace(SignUp_Email) || SignUp_Email.Length < 15) 
+                && (string.IsNullOrWhiteSpace(SignUp_Password) || SignUp_Password.Length < 3) 
+                && (string.IsNullOrWhiteSpace(SignUp_Username) || SignUp_Username.Length < 3))
+                validData = false;
+            else validData = true;
+            return validData;
+        }
+
         private void ExecuteLoginCommand(object obj)
         {
             var isValidUser = userRepository.AuthenticateUser(new System.Net.NetworkCredential(Username, Password));
@@ -94,6 +149,21 @@ namespace Buble.ViewModels
             else
             {
                 ErrorMessage = "* Invalid username or password";
+            }
+        }
+
+        private void ExecuteSignUpCommand(object obj)
+        {
+            var isValidUser = userRepository.AddUser(SignUp_Name, SignUp_Username, SignUp_Email, SignUp_Password);
+            if (isValidUser)
+            {
+                Thread.CurrentPrincipal = new GenericPrincipal(
+                    new GenericIdentity(SignUp_Username), null);
+                IsViewVisible = false;
+            }
+            else
+            {
+                ErrorMessage = "* Username already exists";
             }
         }
     }

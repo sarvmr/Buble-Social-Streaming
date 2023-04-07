@@ -16,6 +16,7 @@ namespace Buble
         {
             w.Show();
             w.startUp.Click += startButton_Click;
+            w.Register.Click += registerButton_Click;
         }
 
         public void startButton_Click(object sender, RoutedEventArgs e)
@@ -31,6 +32,23 @@ namespace Buble
                     var mainView = new MainView();
                     w.Content = mainView;
                     loginView = null;
+                }
+            };
+        }
+
+        public void registerButton_Click(object sender, RoutedEventArgs e)
+        {
+            var signupView = new SignUpView();
+
+            w.Content = signupView;
+
+            signupView.IsVisibleChanged += (s, ev) =>
+            {
+                if (signupView.IsVisible == false && signupView.IsLoaded)
+                {
+                    var mainView = new MainView();
+                    w.Content = mainView;
+                    signupView = null;
                 }
             };
         }

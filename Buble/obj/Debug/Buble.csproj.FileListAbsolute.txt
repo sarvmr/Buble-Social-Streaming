@@ -86,3 +86,5 @@ C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Buble.csproj.CopyComplete
 C:\Users\raisa\source\repos\Buble\Buble\bin\Debug\Microsoft.Toolkit.Wpf.UI.Controls.WebView.dll
 C:\Users\raisa\source\repos\Buble\Buble\bin\Debug\Microsoft.Toolkit.Wpf.UI.Controls.WebView.pdb
 C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Buble.exe.config
+C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\SignUpView.g.cs
+C:\Users\raisa\source\repos\Buble\Buble\obj\Debug\Views\SignUpView.baml

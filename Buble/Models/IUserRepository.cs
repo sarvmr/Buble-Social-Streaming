@@ -19,5 +19,6 @@ namespace Buble.Models
         void ChangeUserPassword(string username, string Password);
         void addFollowing(string username, string Uid);
         void addFollower(string username, string Uid);
+        bool AddUser(string firstname, string username, string email, string password);
     }
 }

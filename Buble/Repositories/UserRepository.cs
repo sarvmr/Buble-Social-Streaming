@@ -7,6 +7,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Windows.Networking;
 
 namespace Buble.Repositories
 {
@@ -40,6 +42,37 @@ namespace Buble.Repositories
                 // username and/or password not found
                 return false;
             }
+        }
+
+        public bool AddUser(string firstname, string username, string email, string password)
+        {
+            var client = GetMongoClient();
+            var database = client.GetDatabase("User-Auth");
+
+            var collection = database.GetCollection<BsonDocument>("User");
+            // Check if username already exists
+            BsonDocument existingUser = collection.Find(new BsonDocument("username", username)).FirstOrDefault();
+            if (existingUser != null)
+            {
+                Console.WriteLine("Username already exists!");
+                return false; // Exit the method or show an error message as appropriate
+            }
+
+            // If username doesn't exist, add the new user document
+            BsonDocument newUser = new BsonDocument
+            {
+                { "Firstname", firstname },
+                { "Lastname", "" },
+                { "Username", username },
+                { "Email", email },
+                { "Password", password },
+                { "Followers", new BsonArray() }, // initialize empty followers array
+                { "Followings", new BsonArray() }  // initialize empty following array
+            };
+
+            collection.InsertOne(newUser);
+            Console.WriteLine("User added successfully.");
+            return true;
         }
 
         public void Edit(UserModel userModel)

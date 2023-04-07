@@ -176,7 +176,8 @@
                 <Button Content="Register"
                         Foreground="White"
                         FontSize="14"
-                        FontWeight="Medium">
+                        FontWeight="Medium"
+                        x:Name="Register">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#393850"></Setter>
