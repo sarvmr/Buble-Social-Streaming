@@ -34,6 +34,14 @@ namespace Buble.Views.Windows
             }
         }
 
+        private void minimize(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
 
+        private void close(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

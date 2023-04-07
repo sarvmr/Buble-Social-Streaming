@@ -62,22 +62,27 @@
                        HorizontalAlignment="Center"
                        FontWeight="Medium"/>
 
-            <Button Content="Start"
-                        Foreground="White"
-                        FontSize="14"
-                        FontWeight="Medium"
-                        Margin="93,0,10,0"
-                        Grid.Column="11"
-                        Grid.ColumnSpan="3" Height="25" VerticalAlignment="Top"
-                        >
+            
+            <Button x:Name="btnMinimize"
+                    Click="minimize"
+                            BorderThickness="0"
+                            Content="-"
+                            Foreground="White"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="13"
+                    
+                   HorizontalAlignment="Right"
+                    Margin="0,0,7,0"
+                            >
+
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="Background" Value="#fe6584"></Setter>
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#28AEED"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#ff4c70"/>
+                                <Setter Property="Background" Value="#278BEF"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -85,11 +90,45 @@
 
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
-                        <Border Width="75" Height="15"
-                                    CornerRadius="8"
-                                    Background="{TemplateBinding Background}">
+                        <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
                             <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
+                                                      HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button x:Name="btnClose"     
+                    Click="close"
+                            BorderThickness="0"
+                            Content="X"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="13"
+                            >
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#DA34AE"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#C62DAE"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>

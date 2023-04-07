@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,9 +28,33 @@ namespace Buble.Views
 
         private void log_out(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = Application.ResourceAssembly.Location,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
 
+            Process.Start(startInfo);
+
+            // Shut down the current instance of the application
             Application.Current.Shutdown();
+
+            Console.ReadLine();
+        }
+
+        private void close(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
+        private void minimize(object sender, RoutedEventArgs e)
+        {
+            // Get a reference to the parent window
+            var window = Window.GetWindow(this);
+
+            // Minimize the window
+            window.WindowState = WindowState.Minimized;
         }
     }
 }
