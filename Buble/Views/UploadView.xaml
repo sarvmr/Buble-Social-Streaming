@@ -37,7 +37,7 @@
                   FontSize="13"
                   FontWeight="Medium"
                   FontFamily="Montserrat"                            
-                  Foreground="White"
+                  Foreground="{StaticResource color1}"
                   CaretBrush="LightGray"
                   BorderBrush="DarkGray"
                   BorderThickness="0,0,0,2"
@@ -118,23 +118,6 @@
                     </Button>
                 </Grid>
                 <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox 
-                  Text="Description:"
-                  FontSize="15"
-                  FontWeight="Medium"
-                  FontFamily="Montserrat"                            
-                  Foreground="Purple"
-                  CaretBrush="LightGray"
-                  BorderBrush="DarkGray"
-                  BorderThickness="0,0,0,2"           
-                  VerticalContentAlignment="Top"
-                  Margin="5"
-                  Padding="0,0,0,0"/>
-                </Grid>
-                <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>

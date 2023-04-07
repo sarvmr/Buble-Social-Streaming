@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Buble.ViewModels
@@ -31,7 +32,7 @@ namespace Buble.ViewModels
             string thumbnail_path)
         {
             //Check if video exists or not.
-            videoRepository.AddVideoInformationToMongoDB(key_name, "sahil", thumbnail_path);
+            videoRepository.AddVideoInformationToMongoDB(key_name, Thread.CurrentPrincipal.Identity.Name, thumbnail_path);
             upload.UploadFileAsync(s3Client, existingBucketName, $"{key_name}.mp4", filepath).Wait();
         }
     }

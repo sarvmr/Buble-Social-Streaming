@@ -11,7 +11,6 @@ namespace Buble.ViewModels
 {
     public class CustomerViewModel : ViewModelBase
     {
-
         public List<UserModel> customers { get; set; }
         UserRepository userRepository;
 
@@ -19,6 +18,7 @@ namespace Buble.ViewModels
         {
             userRepository = new UserRepository();
             customers = userRepository.GetByAll();
+            customers = customers.Where(u => u.Username != Thread.CurrentPrincipal.Identity.Name).ToList<UserModel>();
 
             //var video = repo.GetByVideoId(clickedVideoID);
             //if (video != null)
