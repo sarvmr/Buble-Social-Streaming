@@ -235,17 +235,10 @@
                             </Ellipse>
                             <Button Style="{StaticResource iconButton}"
                                     Tag="{StaticResource color3}"
-                                    Command="{Binding ShowCustomerViewCommand}">
-                                <fa:IconImage Icon="Home" Style="{StaticResource iconButtonIcon}"/>
+                                    Click="log_out">
+                                <fa:IconImage Icon="DoorOpen" Style="{StaticResource iconButtonIcon}"/>
                             </Button>
-                            <Button Style="{StaticResource iconButton}"
-                                    Tag="{StaticResource color4}">
-                                <fa:IconImage Icon="Envelope" Style="{StaticResource iconButtonIcon}"/>
-                            </Button>
-                            <Button Style="{StaticResource iconButton}"
-                                    Tag="{StaticResource color5}">
-                                <fa:IconImage Icon="Bell" Style="{StaticResource iconButtonIcon}"/>
-                            </Button>
+
                         </StackPanel>
                     </Grid>
 

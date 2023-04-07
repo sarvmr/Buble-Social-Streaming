@@ -17,6 +17,13 @@ namespace Buble
             w.Show();
             w.startUp.Click += startButton_Click;
             w.Register.Click += registerButton_Click;
+
+            //mainView.Log_Out.Click += Log_Out;
+        }
+
+        public void Log_Out(object sender, EventArgs e)
+        {
+            w.Show();
         }
 
         public void startButton_Click(object sender, RoutedEventArgs e)

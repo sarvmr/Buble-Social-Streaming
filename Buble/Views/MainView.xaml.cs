@@ -24,5 +24,12 @@ namespace Buble.Views
         {
             InitializeComponent();
         }
+
+        private void log_out(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+
+            Application.Current.Shutdown();
+        }
     }
 }
